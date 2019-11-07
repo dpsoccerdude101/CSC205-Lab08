@@ -1,7 +1,10 @@
+/**
+ * 
+ */
 package lab08;
 
 /**
- * @author Kyle Adams and Dennis
+ * @author Kyle Adams
  *
  */
 import java.util.*;
@@ -16,27 +19,30 @@ public class Inventory {
 	 * @param p
 	 */
 	public void sortedInsert(Part p) {
-		//failed attempt and insertion sort and many others, array[] should be replaced with inventoryList
-//		for (int i = 1; i < inventoryList.size(); i++) {
-//	        Part current = inventoryList.get(i);
-//	        int j = i - 1;
-//	        
-//	        while(j >= 0 && current.compareTo(inventoryList.get(i))) {
-//	            array[j+1] = array[j];
-//	            j--;
-//	        }
-//	        // at this point we've exited, so j is either -1
-//	        // or it's at the first element where current >= a[j]
-//	        array[j+1] = current;
-//	    }
-//		
-//		for(int i = 0; i < inventoryList.size(); i++) {
-//			if(inventoryList.get(i).compareTo(p) == 1) {
-//			
-//				
-//			}
-		//}
-	    
+		boolean pSpot = false;
+		
+		if(inventoryList.size() == 0) {
+			inventoryList.add(p);
+		}
+		else {
+			int i = 0;
+			while (i < inventoryList.size() && pSpot == false) {
+				
+				if (p.compareTo(inventoryList.get(i)) == 1) { 
+					inventoryList.add(i,p);
+					pSpot = true;
+					//i++;
+				} 
+				else if (i > inventoryList.size()) {
+					 pSpot = true;
+					 inventoryList.add(i,p);
+				}
+				i++;
+			}
+		}
+		
+        
+		
 	            }
 	   
 	    /**
@@ -57,12 +63,14 @@ public class Inventory {
 		 * @return string
 		 */
 		public String searchByColor(String color) {
+			ArrayList<Part> dummyList = new ArrayList<Part>();
+			
 			for(int i = 0; i < inventoryList.size(); i++) {
 				if(inventoryList.get(i).getColor() == color) {
-					return (inventoryList.get(i).toString());
+					dummyList.add(inventoryList.get(i));
 				}
 			}
-			return null;
+			return dummyList.toString();
 		}
 		
 		/**
