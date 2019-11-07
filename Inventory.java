@@ -58,7 +58,7 @@ public class Inventory {
 		 */
 		public String searchByColor(String color) {
 			for(int i = 0; i < inventoryList.size(); i++) {
-				if(inventoryList.get(i).getColor() == color) {
+				if(inventoryList.get(i).getColor().equalsIgnoreCase(color)) {
 					return (inventoryList.get(i).toString());
 				}
 			}
