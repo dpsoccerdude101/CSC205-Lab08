@@ -57,12 +57,13 @@ public class Inventory {
 		 * @return string
 		 */
 		public String searchByColor(String color) {
+			String concatInventoryMatches = "";
 			for(int i = 0; i < inventoryList.size(); i++) {
 				if(inventoryList.get(i).getColor().equalsIgnoreCase(color)) {
-					return (inventoryList.get(i).toString());
+					concatInventoryMatches += (inventoryList.get(i).toString() + "\n");
 				}
 			}
-			return null;
+			return concatInventoryMatches;
 		}
 		
 		/**
